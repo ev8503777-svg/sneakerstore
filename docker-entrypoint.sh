@@ -17,7 +17,7 @@ sed -i 's/SESSION_DRIVER=.*/SESSION_DRIVER=file/g' /var/www/html/.env
 sed -i 's/CACHE_STORE=.*/CACHE_STORE=file/g' /var/www/html/.env
 sed -i 's/QUEUE_CONNECTION=.*/QUEUE_CONNECTION=sync/g' /var/www/html/.env
 sed -i 's/APP_ENV=.*/APP_ENV=production/g' /var/www/html/.env
-sed -i 's/APP_DEBUG=.*/APP_DEBUG=false/g' /var/www/html/.env
+sed -i 's/APP_DEBUG=.*/APP_DEBUG=true/g' /var/www/html/.env
 
 # Set APP_URL from Render environment
 if [ -n "$RENDER_EXTERNAL_URL" ]; then
