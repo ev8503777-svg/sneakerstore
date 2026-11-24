@@ -19,6 +19,11 @@ sed -i 's/QUEUE_CONNECTION=.*/QUEUE_CONNECTION=sync/g' /var/www/html/.env
 sed -i 's/APP_ENV=.*/APP_ENV=production/g' /var/www/html/.env
 sed -i 's/APP_DEBUG=.*/APP_DEBUG=false/g' /var/www/html/.env
 
+# Set APP_URL from Render environment
+if [ -n "$RENDER_EXTERNAL_URL" ]; then
+    sed -i "s|APP_URL=.*|APP_URL=${RENDER_EXTERNAL_URL}|g" /var/www/html/.env
+fi
+
 # Generate application key
 php artisan key:generate --force
 
