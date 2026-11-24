@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Administrador',
                 'password' => Hash::make('admin1234'),
+                'is_admin' => true,
             ]
         );
 
@@ -28,6 +29,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Eva',
                 'password' => Hash::make('12345678'),
+                'is_admin' => false,
             ]
         );
 
