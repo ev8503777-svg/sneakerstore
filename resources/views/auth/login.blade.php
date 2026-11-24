@@ -36,6 +36,20 @@
         </div>
 
         <div class="p-7">
+            @if(session('warning'))
+                <div class="mb-4 text-xs text-amber-800 bg-amber-50 p-3 rounded-xl border border-amber-300 font-bold flex items-center gap-2">
+                    <span>⏱️</span>
+                    <span>{{ session('warning') }}</span>
+                </div>
+            @endif
+
+            @if(session('info'))
+                <div class="mb-4 text-xs text-blue-800 bg-blue-50 p-3 rounded-xl border border-blue-200 font-semibold flex items-center gap-2">
+                    <span>ℹ️</span>
+                    <span>{{ session('info') }}</span>
+                </div>
+            @endif
+
             @if ($errors->any())
                 <div class="mb-4 text-xs text-red-600 bg-red-50 p-2.5 rounded-lg border border-red-200">
                     @foreach ($errors->all() as $error)
@@ -50,13 +64,15 @@
                 <!-- Correo electrónico -->
                 <div>
                     <label class="block text-xs font-semibold text-gray-700 mb-1.5" for="email">
-                        Correo electrónico
+                        Correo electrónico <span class="text-teal-600 font-bold">(con @ y dominio)</span>
                     </label>
                     <input 
                         type="email" 
                         id="email" 
                         name="email" 
                         value="{{ old('email') }}" 
+                        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                        title="Debe incluir el signo @ y un dominio válido (ejemplo: usuario@correo.com)"
                         required 
                         autofocus
                         placeholder="ejemplo@correo.com"
@@ -67,14 +83,16 @@
                 <!-- Contraseña -->
                 <div>
                     <label class="block text-xs font-semibold text-gray-700 mb-1.5" for="password">
-                        Contraseña
+                        Contraseña <span class="text-teal-600 font-bold">(Mínimo 8 caracteres)</span>
                     </label>
                     <input 
                         type="password" 
                         id="password" 
                         name="password" 
+                        minlength="8"
+                        title="La contraseña debe tener al menos 8 caracteres"
                         required
-                        placeholder="••••••••"
+                        placeholder="Mínimo 8 caracteres"
                         class="w-full px-3.5 py-2 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600 text-gray-900 shadow-sm"
                     />
                 </div>

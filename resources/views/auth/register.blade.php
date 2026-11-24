@@ -53,13 +53,16 @@
             <!-- Nombre -->
             <div>
                 <label class="block text-xs font-semibold text-gray-700 mb-1.5" for="name">
-                    Nombre
+                    Nombre <span class="text-indigo-600 font-bold">(Solo letras)</span>
                 </label>
                 <input 
                     type="text" 
                     id="name" 
                     name="name" 
                     value="{{ old('name') }}" 
+                    pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
+                    title="Solo se permiten letras y espacios" 
+                    oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '')"
                     required 
                     autofocus
                     class="w-full px-3.5 py-2 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-gray-900"
@@ -69,13 +72,16 @@
             <!-- Correo electrónico -->
             <div>
                 <label class="block text-xs font-semibold text-gray-700 mb-1.5" for="email">
-                    Correo electrónico
+                    Correo electrónico <span class="text-indigo-600 font-bold">(con @ y dominio)</span>
                 </label>
                 <input 
                     type="email" 
                     id="email" 
                     name="email" 
                     value="{{ old('email') }}" 
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                    title="Debe incluir el signo @ y un dominio válido (ejemplo: usuario@correo.com)"
+                    placeholder="ejemplo@correo.com"
                     required
                     class="w-full px-3.5 py-2 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-gray-900"
                 />
@@ -84,12 +90,15 @@
             <!-- Contraseña -->
             <div>
                 <label class="block text-xs font-semibold text-gray-700 mb-1.5" for="password">
-                    Contraseña
+                    Contraseña <span class="text-indigo-600 font-bold">(Mínimo 8 caracteres)</span>
                 </label>
                 <input 
                     type="password" 
                     id="password" 
                     name="password" 
+                    minlength="8"
+                    title="La contraseña debe tener al menos 8 caracteres"
+                    placeholder="Mínimo 8 caracteres"
                     required
                     class="w-full px-3.5 py-2 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-gray-900"
                 />
@@ -98,12 +107,15 @@
             <!-- Confirmar Contraseña -->
             <div>
                 <label class="block text-xs font-semibold text-gray-700 mb-1.5" for="password_confirmation">
-                    confirmar Contraseña
+                    Confirmar Contraseña <span class="text-indigo-600 font-bold">(Mínimo 8 caracteres)</span>
                 </label>
                 <input 
                     type="password" 
                     id="password_confirmation" 
                     name="password_confirmation" 
+                    minlength="8"
+                    title="Repite la contraseña exactamente igual (mínimo 8 caracteres)"
+                    placeholder="Repite la contraseña"
                     required
                     class="w-full px-3.5 py-2 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-gray-900"
                 />
